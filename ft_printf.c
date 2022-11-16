@@ -6,7 +6,7 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:36:52 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/15 19:25:32 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/16 10:28:59 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,27 @@ int	ft_printfarg(const char format, va_list arg)
 	if (format == '%')
 		len += (int)write(1, "%", 1);
 	return (len);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	int	len;
+	int	i;
+	va_list	arg;
+
+	va_start(arg, format);
+	i = 0;
+	len = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			len += ft_printfarg(format[i], arg);
+		}
+		else
+			len += (int)write(1, &format[i], 1);
+		i++
+	}
+	va_end(arg);
 }
