@@ -6,7 +6,7 @@
 #    By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 10:40:12 by lsohler           #+#    #+#              #
-#    Updated: 2022/11/16 15:40:09 by lsohler          ###   ########.fr        #
+#    Updated: 2022/11/17 15:25:58 by lsohler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		= libftprintf.a
 INCLUDE		= include/
 PRINTF_LIB	= printflib/
 LIBFT_DIR	= libft/
+LIBFT       = libft.a
 OBJS_DIR	= objs/
 CC		= gcc
 CFLAGS		= -Wall -Werror -Wextra
@@ -21,32 +22,35 @@ RM		= rm -f
 AR		= ar rcs
 
 SRC_F		= ft_printfchar.c ft_printfhex.c ft_printfnbr.c ft_printfstr.c ft_printfunbr.c\
-		ft_printfptr.c
+		ft_printfptr.c ft_printf.c
 
 SRCS		= $(addprefix $(PRINTF_LIB), $(SRC_F))
 
-OBJS		= $(SRCS_F:%.c=$(OBJS_DIR)/%.o)
+OBJS		= $(SRCS:.c=.o)
 
+
+.c.o:
+			$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(LIBFT)
-			$(AR) $(NAME) $(OBJS)
-
-$(OBJS):	$(OBJS_DIR)/%.o: $(PRINTF_LIB)/%.c
-			mkdir -p $(OBJS_DIR)
-			$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
-
-$(LIBFT):	
+$(NAME):	$(OBJS)
 			make -C $(LIBFT_DIR)
-			cp $(LIBFT_DIR)/libft.a $(NAME)
+			cp $(LIBFT_DIR)$(LIBFT) $(LIBFT)
+			$(AR) $(NAME) $(LIBFT) $(OBJS)
+
+
+$(LIBFT):
+			make -C $(LIBFT_DIR)
+			cp $(LIBFT_DIR)libft.a $(LIBFT)
+			echo "000000000000000000000000"
 
 clean:
 			make clean -C $(LIBFT_DIR)
-			rm -rf $(OBJS_DIR)
+			$(RM) $(OBJS)
 
 fclean:		clean
-			make fclean -C $(LIBFT_DIR)
+			$(RM) libft/libft.a
 			$(RM) $(NAME)
 
 re:		fclean all

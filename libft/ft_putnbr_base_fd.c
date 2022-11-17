@@ -6,11 +6,11 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:54:45 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/15 16:43:09 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:11:50 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 int	ft_checkbase(char *base)
 {

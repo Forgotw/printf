@@ -6,7 +6,7 @@
 /*   By: lsohler <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:55:49 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/16 14:37:39 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:11:22 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-int	ft_intlen(int x);
-int	ft_uintlen(unsigned int x);
-int	ft_checkbase(char *base);
-int	ft_putnbr_base_fd(int x, char *base, int fd);
+int		ft_intlen(int x);
+int		ft_uintlen(unsigned int x);
+int		ft_checkbase(char *base);
+int		ft_putnbr_base_fd(int x, char *base, int fd);
 
 
 #endif

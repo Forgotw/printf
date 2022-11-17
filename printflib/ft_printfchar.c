@@ -6,14 +6,14 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:48:26 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/15 17:50:02 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:11:44 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
 int	ft_printfchar(char c)
 {
-	write(1, &c, 1)
+	write(1, &c, 1);
 	return (1);
 }

@@ -6,11 +6,11 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:36:52 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/16 10:28:59 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:14:27 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
 
 int	ft_printfarg(const char format, va_list arg)
 {
@@ -18,17 +18,17 @@ int	ft_printfarg(const char format, va_list arg)
 
 	len = 0;
 	if (format == 'c')
-		len += ft_printfchar(va_arg(args, char));
+		len += ft_printfchar(va_arg(arg, int));
 	if (format == 's')
-		len += ft_printfstr(va_arg(args, char *));
+		len += ft_printfstr(va_arg(arg, char *));
 	if (format == 'p')
-		len += ft_printfptr(va_arg(args, unsigned long));
+		len += ft_printfptr(va_arg(arg, unsigned long));
 	if (format == 'd' || format == 'i')
-		len += ft_printfnbr(va_arg(args, int));
+		len += ft_printfnbr(va_arg(arg, int));
 	if (format == 'u')
-		len += ft_printfunbr(va_arg(args, unsigned int));
+		len += ft_printfunbr(va_arg(arg, unsigned int));
 	if (format == 'x' || format == 'X')
-		len += ft_printfhex(va_arg(args, unsigned int), format);
+		len += ft_printfhex(va_arg(arg, unsigned int), format);
 	if (format == '%')
 		len += (int)write(1, "%", 1);
 	return (len);
@@ -36,8 +36,8 @@ int	ft_printfarg(const char format, va_list arg)
 
 int	ft_printf(const char *format, ...)
 {
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 	va_list	arg;
 
 	va_start(arg, format);
@@ -52,7 +52,8 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 			len += (int)write(1, &format[i], 1);
-		i++
+		i++;
 	}
 	va_end(arg);
+	return (len);
 }

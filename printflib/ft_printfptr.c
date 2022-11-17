@@ -6,18 +6,19 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:43:25 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/16 14:57:48 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 15:15:59 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
+#include "../libft/libft.h"
 
 int	ft_ptrlen(long int x)
 {
 	int	i;
 
 	i = 0;
-	if (x = 0)
+	if (x == 0)
 		return (3);
 	if (x < 0)
 	{
@@ -58,20 +59,20 @@ int	ft_checkbaseptr(char *base)
 
 void	ft_putptr_fd(long int x, char *base, int fd)
 {
-	int		baselen;
+	int			baselen;
 	long int	nbr;
 
 	baselen = ft_strlen(base);
 	nbr = x;
-	if (ft_checkbase == 1)
+	if (ft_checkbaseptr(base) == 1)
 	{
 		if (nbr < 0)
 		{
-			nbr *=	-1;
+			nbr *= -1;
 			ft_putchar_fd('-', fd);
 		}
 		if (nbr < baselen)
-			ft_putchar_fd(base[nbr]);
+			ft_putchar_fd(base[nbr], fd);
 		if (nbr >= baselen)
 		{
 			ft_putnbr_base_fd(nbr / baselen, base, fd);
@@ -88,7 +89,6 @@ int	ft_printfptr(long int x)
 		return (3);
 	}
 	write(1, "0x", 2);
-	ft_putnbr_base_fd(x, "0123456789abcdef", 1);
+	ft_putptr_fd(x, "0123456789abcdef", 1);
 	return (ft_ptrlen(x));
-
 }

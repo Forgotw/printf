@@ -6,11 +6,12 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 17:50:45 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/15 18:07:20 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/17 14:23:17 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "ft_printf.h"
+#include "../libft/libft.h"
 
 void	ft_putunbr_fd(unsigned int n, int fd)
 {
@@ -22,7 +23,7 @@ void	ft_putunbr_fd(unsigned int n, int fd)
 	if (n < 10 && n >= 0)
 		ft_putchar_fd((n + '0'), fd);
 }
-}
+
 int	ft_printfunbr(unsigned int n)
 {
 	ft_putunbr_fd(n, 1);
