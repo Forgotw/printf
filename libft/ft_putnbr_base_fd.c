@@ -6,7 +6,7 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:54:45 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/17 14:11:50 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:15:36 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ int	ft_checkbase(char *base)
 	return (1);
 }
 
-void	ft_putnbr_base_fd(int x, char *base, int fd)
+void	ft_putnbr_base_fd(long x, char *base, int fd)
 {
-	int		baselen;
+	int			baselen;
 	long int	nbr;
-	
+
 	baselen = ft_strlen(base);
 	nbr = x;
-	if (ft_checkbase == 1)
+	if (ft_checkbase(base) == 1)
 	{
 		if (nbr < 0)
 		{
@@ -51,7 +51,7 @@ void	ft_putnbr_base_fd(int x, char *base, int fd)
 			ft_putchar_fd('-', fd);
 		}
 		if (nbr < baselen)
-			ft_putchar_fd(base[nbr]);
+			ft_putchar_fd(base[nbr], 1);
 		if (nbr >= baselen)
 		{
 			ft_putnbr_base_fd(nbr / baselen, base, fd);

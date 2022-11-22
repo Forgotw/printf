@@ -6,14 +6,14 @@
 /*   By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:43:25 by lsohler           #+#    #+#             */
-/*   Updated: 2022/11/17 15:15:59 by lsohler          ###   ########.fr       */
+/*   Updated: 2022/11/22 16:43:39 by lsohler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "../libft/libft.h"
 
-int	ft_ptrlen(long int x)
+int	ft_ptrlen(unsigned long int x)
 {
 	int	i;
 
@@ -59,10 +59,10 @@ int	ft_checkbaseptr(char *base)
 
 void	ft_putptr_fd(long int x, char *base, int fd)
 {
-	int			baselen;
-	long int	nbr;
+	unsigned long int	baselen;
+	unsigned long int	nbr;
 
-	baselen = ft_strlen(base);
+	baselen = (unsigned long int)ft_strlen(base);
 	nbr = x;
 	if (ft_checkbaseptr(base) == 1)
 	{
@@ -81,7 +81,7 @@ void	ft_putptr_fd(long int x, char *base, int fd)
 	}
 }
 
-int	ft_printfptr(long int x)
+int	ft_printfptr(unsigned long int x)
 {
 	if (x == 0)
 	{

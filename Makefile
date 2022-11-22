@@ -6,7 +6,7 @@
 #    By: lsohler <lsohler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 10:40:12 by lsohler           #+#    #+#              #
-#    Updated: 2022/11/17 15:25:58 by lsohler          ###   ########.fr        #
+#    Updated: 2022/11/22 16:07:58 by lsohler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,30 +28,28 @@ SRCS		= $(addprefix $(PRINTF_LIB), $(SRC_F))
 
 OBJS		= $(SRCS:.c=.o)
 
-
 .c.o:
 			$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			make -C $(LIBFT_DIR)
-			cp $(LIBFT_DIR)$(LIBFT) $(LIBFT)
-			$(AR) $(NAME) $(LIBFT) $(OBJS)
+$(NAME):	$(LIBFT) $(OBJS)
+			$(AR) $(NAME) $(OBJS)
+			@echo "FINISHED"
 
 
 $(LIBFT):
-			make -C $(LIBFT_DIR)
-			cp $(LIBFT_DIR)libft.a $(LIBFT)
-			echo "000000000000000000000000"
+			make -C $(LIBFT_DIR) 
+			cp $(LIBFT_DIR)$(LIBFT) $(NAME)
+			@echo "000000000000000000000000"
 
 clean:
 			make clean -C $(LIBFT_DIR)
 			$(RM) $(OBJS)
 
 fclean:		clean
-			$(RM) libft/libft.a
-			$(RM) $(NAME)
+			$(RM) $(LIBFT_DIR)$(LIBFT)
+			$(RM) $(NAME) $(OBJS)
 
 re:		fclean all
 
